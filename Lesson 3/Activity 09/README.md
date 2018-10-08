@@ -1,0 +1,5 @@
+# Stock Price Prediction with Quadratic and Cubic Linear Polynomial Regression with Multiple Variable
+
+This activity will discuss how to perform linear, polynomial, and support vector regression with Scikit-learn. We will also learn to predict the best fit model for a given task. We will be assuming that you are a software engineer at a financial institution and your employer wants to know whether linear regression, or support vector regression is a better fit for predicting stock prices. You will have to load all data of the S&P 500 from a data source. Then build a regressor using linear regression, cubic polynomial linear regression, and a support vector regression with a polynomial kernel of degree 3. Then separate training and test data. Plot the test labels and the prediction results and compare them with the y=x line. And finally, compare how well the three models score.
+
+Solution: `prediction.py`
