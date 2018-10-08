@@ -1,10 +1,5 @@
-# Exercise 05: Pathfinding with the A* Algorithm
 
-Implement the A* algorithm to find the path with the lowest cost.
 
-Game field:
-
-```
 Size = (7,9)
 Start=(5,3)
 End=(6,9)
@@ -25,12 +20,3 @@ def succ( State, VisitedNodes ):
     if row < maxRow: succStates += [(row+1,col)]
     if col < maxCol: succStates += [(row, col+1)] 
     return [s for s in succStates if s not in VisitedNodes if s not in Obstacles]
-```
-
-## Execution
-
-Run `astar( Start, End )` to execute the A* algorithm.
-
-For more information on how the algorithm executes, run `astar_verbose( Start, End )`.
-
-To get the shortest path, run `astar_with_path( Start, End )`.
