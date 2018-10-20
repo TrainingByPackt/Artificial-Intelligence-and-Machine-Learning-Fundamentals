@@ -18,13 +18,17 @@ dataPoints = np.array([
 ]) 
 
 
+print( '--------------------------')
 print( 'K-Means with 3 clusters: ' )
+print( '\n' )
 
 kMeansModel = KMeans(n_clusters=3) 
 kMeansModel.fit( dataPoints )
 
 print( 'Cluster centers: ', kMeansModel.cluster_centers_ )
+print( '\n' )
 print( 'Labels', kMeansModel.labels_ )
+print( '\n\n\n' )
 
 plot.scatter( 
     kMeansModel.cluster_centers_[:,0],  
@@ -40,14 +44,19 @@ for i in range( len( dataPoints ) ):
 plot.show()
 
 print( 'Prediction [(5,5),(0,10)]: ', kMeansModel.predict( [[5,5],[0,10]] ) )
+print( '\n\n\n' )
 
-print( '\n\n\nK-Means with 2 clusters: ' )
+print( '--------------------------')
+print( 'K-Means with 2 clusters: ' )
+print( '\n' )
 
 kMeansModel = KMeans(n_clusters=2) 
 kMeansModel.fit( dataPoints )
 
 print( 'Cluster centers: ', kMeansModel.cluster_centers_ )
+print( '\n' )
 print( 'Labels', kMeansModel.labels_ )
+print( '\n\n\n' )
 
 plot.scatter( 
     kMeansModel.cluster_centers_[:,0],  

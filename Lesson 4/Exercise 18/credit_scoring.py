@@ -54,7 +54,7 @@ classifier = neighbors.KNeighborsClassifier()
 classifier.fit( featuresTrain, labelTrain )
 
 print( 'Model score: ', classifier.score( featuresTest, labelTest ) )
-
+print( '\n' )
 
 # Prediction: let's assemble a random data point:
 dataPoint = [None] * 20 

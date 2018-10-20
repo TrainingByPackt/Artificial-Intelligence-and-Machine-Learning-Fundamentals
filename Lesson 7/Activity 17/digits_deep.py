@@ -87,6 +87,7 @@ print(
     'Confusion matrix:',
     confusion_matrix( labelTest, labelPredicted )
 )
+print( '\n\n' )
 
 print(
     'Accuracy score:',

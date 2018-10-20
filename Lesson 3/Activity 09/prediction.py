@@ -40,6 +40,7 @@ label = np.array( dataFrame['Real Price Label'] )
 model = linear_model.LinearRegression() 
 model.fit( featuresTrain, labelTrain ) 
 print( 'Linear model score: ', model.score( featuresTest, labelTest ) )
+print( '\n' )
 
 labelPredicted = model.predict(featuresTest) 
 plot.plot(  
@@ -58,6 +59,7 @@ linearModel = linear_model.LinearRegression()
 linearModel.fit( polyFeaturesTrain, polyLabelTrain )
 
 print( 'Polynomial model score: ', linearModel.score( polyFeaturesTest, polyLabelTest ) )
+print( '\n' )
 
 polyLabelPredicted = linearModel.predict(polyFeaturesTest) 
 plot.plot(  

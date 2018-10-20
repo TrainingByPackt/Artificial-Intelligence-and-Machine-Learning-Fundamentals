@@ -24,7 +24,9 @@ MeanShiftModel = MeanShift()
 MeanShiftModel.fit( dataPoints )
 
 print( 'Cluster centers: ', MeanShiftModel.cluster_centers_ )
+print( '\n' )
 print( 'Labels', MeanShiftModel.labels_ )
+print( '\n\n' )
 
 plot.scatter( 
     MeanShiftModel.cluster_centers_[:,0],  

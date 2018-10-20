@@ -54,26 +54,31 @@ featuresTrain, featuresTest, labelTrain, labelTest = model_selection.train_test_
 classifier = svm.SVC(kernel="linear") 
 classifier.fit( featuresTrain, labelTrain ) 
 print( 'Linear kernel score: ', classifier.score( featuresTest, labelTest ) )
+print( '\n' )
 
 # 2. Polynomial kernel of degree 4, C=2, gamma=0.05
 classifier = svm.SVC(kernel="poly", C=2, degree=4, gamma=0.05) 
 classifier.fit( featuresTrain, labelTrain ) 
 print( 'Polynomial kernel score (degree 4, C=2, gamma=0.05): ', classifier.score( featuresTest, labelTest ) )
+print( '\n' )
 
 # 3. Polynomial kernel of degree  4, C=2, gamma=0.25
 classifier = svm.SVC(kernel="poly", C=2, degree=4, gamma=0.25) 
 classifier.fit( featuresTrain, labelTrain ) 
 print( 'Polynomial kernel score (degree  4, C=2, gamma=0.25):', classifier.score( featuresTest, labelTest ) )
+print( '\n' )
 
 # 4. Polynomial kernel of degree  4, C=2, gamma=0.5
 classifier = svm.SVC(kernel="poly", C=2, degree=4, gamma=0.5) 
 classifier.fit( featuresTrain, labelTrain ) 
 print( 'Polynomial kernel score (degree  4, C=2, gamma=0.5):', classifier.score( featuresTest, labelTest ) )
+print( '\n' )
 
 # 5. Sigmoid kernel
 classifier = svm.SVC(kernel="sigmoid") 
 classifier.fit( featuresTrain, labelTrain ) 
 print( 'Sigmoid kernel score:', classifier.score( featuresTest, labelTest ) )
+print( '\n' )
 
 # Default kernel with a gamma of 0.15
 classifier = svm.SVC(kernel="rbf", gamma=0.15) 

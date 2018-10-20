@@ -17,4 +17,5 @@ kMeansModel = KMeans()
 kMeansModel.fit( scaledFeatures )
 
 print( 'Cluster centers: ', kMeansModel.cluster_centers_ )
+print( '\n' )
 print( 'Labels: ', kMeansModel.labels_ )

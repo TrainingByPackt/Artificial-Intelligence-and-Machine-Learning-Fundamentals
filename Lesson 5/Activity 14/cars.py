@@ -51,6 +51,7 @@ print(
         randomForestClassifier.predict( featuresTest )  
     )  
 )
+print( '\n\n' )
 
 print( 'extraTreesClassifier:' )
 print(  
@@ -59,16 +60,19 @@ print(
         extraTreesClassifier.predict( featuresTest )  
     )  
 )
+print( '\n' )
 
 print( 
     'randomForestClassifier.feature_importances_: ', 
     randomForestClassifier.feature_importances_ 
 )
+print( '\n\n' )
 
 print(
     'extraTreesClassifier.feature_importances_: ',
     extraTreesClassifier.feature_importances_
 )
+print( '\n\n' )
 
 
 features2 = np.array( dataFrameEncoded.drop(['Class', 'Doors'], 1)) 
@@ -93,6 +97,7 @@ print(
         randomForestClassifier2.predict( featuresTest2 )  
     )  
 )
+print( '\n\n' )
 
 print( 'extraTreesClassifier2:' )
 print(  
@@ -101,6 +106,7 @@ print(
         extraTreesClassifier2.predict( featuresTest2 )  
     )  
 )
+print( '\n\n' )
 
 randomForestClassifier3 = RandomForestClassifier(n_estimators=150, max_depth=8, criterion='entropy', max_features=5) 
 randomForestClassifier3.fit( featuresTrain2, labelTrain2 ) 
@@ -112,6 +118,7 @@ print(
         randomForestClassifier3.predict( featuresTest2 )  
     )  
 )
+print( '\n\n' )
 
 extraTreesClassifier3 = ExtraTreesClassifier(n_estimators=150, max_depth=8, criterion='entropy', max_features=5) 
 

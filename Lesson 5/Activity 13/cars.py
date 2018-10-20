@@ -40,7 +40,7 @@ decisionTree = DecisionTreeClassifier()
 decisionTree.fit( featuresTrain, labelTrain )
 
 print( 'Score: ', decisionTree.score( featuresTest, labelTest ) )
-
+print( '\n\n' )
 print(  
     classification_report(  
         labelTest,  
