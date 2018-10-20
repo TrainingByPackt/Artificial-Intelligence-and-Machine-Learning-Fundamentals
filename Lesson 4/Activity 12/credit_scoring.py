@@ -1,11 +1,14 @@
 import pandas 
 import numpy as np 
 from sklearn import model_selection 
+from sklearn import preprocessing 
 from sklearn import svm 
 
+# 1. Loading data
 dataFrame = pandas.read_csv('german.data', sep=' ')  
 dataFrame.replace( 'NA', -1000000, inplace=True )
 
+# 2. Label encoding
 labels = { 
     'CheckingAccountStatus': ['A11', 'A12', 'A13', 'A14'], 
     'CreditHistory': ['A30', 'A31', 'A32', 'A33', 'A34'], 
@@ -21,9 +24,6 @@ labels = {
     'Phone': ['A191', 'A192'], 
     'ForeignWorker': ['A201', 'A202'] 
 } 
-
-
-from sklearn import preprocessing 
 labelEncoders = {} 
 dataFrameEncoded = pandas.DataFrame() 
 
@@ -35,14 +35,14 @@ for column in dataFrame:
     else: 
         dataFrameEncoded[column] = dataFrame[column] 
 
-
-
+# 3. Identification of features and labels
 features = np.array( dataFrameEncoded.drop(['CreditScore'], 1)) 
 label = np.array( dataFrameEncoded['CreditScore'] )
 
-
+# 4. Scaling features
 scaledFeatures = preprocessing.MinMaxScaler( feature_range=(0,1) ).fit_transform( features )
 
+# 5. Splitting training and testing data
 featuresTrain, featuresTest, labelTrain, labelTest = model_selection.train_test_split( 
     scaledFeatures, 
     label, 
@@ -50,37 +50,37 @@ featuresTrain, featuresTest, labelTrain, labelTest = model_selection.train_test_
 )
 
 
-# 1. Linear kernel
+# A. Linear kernel
 classifier = svm.SVC(kernel="linear") 
 classifier.fit( featuresTrain, labelTrain ) 
 print( 'Linear kernel score: ', classifier.score( featuresTest, labelTest ) )
 print( '\n' )
 
-# 2. Polynomial kernel of degree 4, C=2, gamma=0.05
+# B. Polynomial kernel of degree 4, C=2, gamma=0.05
 classifier = svm.SVC(kernel="poly", C=2, degree=4, gamma=0.05) 
 classifier.fit( featuresTrain, labelTrain ) 
 print( 'Polynomial kernel score (degree 4, C=2, gamma=0.05): ', classifier.score( featuresTest, labelTest ) )
 print( '\n' )
 
-# 3. Polynomial kernel of degree  4, C=2, gamma=0.25
+# C. Polynomial kernel of degree  4, C=2, gamma=0.25
 classifier = svm.SVC(kernel="poly", C=2, degree=4, gamma=0.25) 
 classifier.fit( featuresTrain, labelTrain ) 
 print( 'Polynomial kernel score (degree  4, C=2, gamma=0.25):', classifier.score( featuresTest, labelTest ) )
 print( '\n' )
 
-# 4. Polynomial kernel of degree  4, C=2, gamma=0.5
+# D. Polynomial kernel of degree  4, C=2, gamma=0.5
 classifier = svm.SVC(kernel="poly", C=2, degree=4, gamma=0.5) 
 classifier.fit( featuresTrain, labelTrain ) 
 print( 'Polynomial kernel score (degree  4, C=2, gamma=0.5):', classifier.score( featuresTest, labelTest ) )
 print( '\n' )
 
-# 5. Sigmoid kernel
+# E. Sigmoid kernel
 classifier = svm.SVC(kernel="sigmoid") 
 classifier.fit( featuresTrain, labelTrain ) 
 print( 'Sigmoid kernel score:', classifier.score( featuresTest, labelTest ) )
 print( '\n' )
 
-# Default kernel with a gamma of 0.15
+# F. Default kernel with a gamma of 0.15
 classifier = svm.SVC(kernel="rbf", gamma=0.15) 
 classifier.fit( featuresTrain, labelTrain ) 
 print( 'Default kernel with a gamma of 0.15 score:', classifier.score( featuresTest, labelTest ) )

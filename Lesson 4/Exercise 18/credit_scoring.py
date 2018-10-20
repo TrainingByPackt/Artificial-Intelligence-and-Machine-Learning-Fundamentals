@@ -1,11 +1,14 @@
 import pandas 
 import numpy as np 
 from sklearn import model_selection 
+from sklearn import preprocessing 
 from sklearn import neighbors 
 
+# 1. Loading data
 dataFrame = pandas.read_csv('german.data', sep=' ')  
 dataFrame.replace( 'NA', -1000000, inplace=True )
 
+# 2. Label encoding
 labels = { 
     'CheckingAccountStatus': ['A11', 'A12', 'A13', 'A14'], 
     'CreditHistory': ['A30', 'A31', 'A32', 'A33', 'A34'], 
@@ -21,9 +24,6 @@ labels = {
     'Phone': ['A191', 'A192'], 
     'ForeignWorker': ['A201', 'A202'] 
 } 
-
-
-from sklearn import preprocessing 
 labelEncoders = {} 
 dataFrameEncoded = pandas.DataFrame() 
 
@@ -35,28 +35,28 @@ for column in dataFrame:
     else: 
         dataFrameEncoded[column] = dataFrame[column] 
 
-
-
+# 3. Identification of features and labels
 features = np.array( dataFrameEncoded.drop(['CreditScore'], 1)) 
 label = np.array( dataFrameEncoded['CreditScore'] )
 
-
+# 4. Scaling features
 scaledFeatures = preprocessing.MinMaxScaler( feature_range=(0,1) ).fit_transform( features )
 
+# 5. Splitting training and testing data
 featuresTrain, featuresTest, labelTrain, labelTest = model_selection.train_test_split( 
     scaledFeatures, 
     label, 
     test_size=0.2 
 )
 
-
+# 6. Classification
 classifier = neighbors.KNeighborsClassifier() 
 classifier.fit( featuresTrain, labelTrain )
 
 print( 'Model score: ', classifier.score( featuresTest, labelTest ) )
 print( '\n' )
 
-# Prediction: let's assemble a random data point:
+# 7. Prediction assembling a random data point:
 dataPoint = [None] * 20 
 for i in range(20): 
     dataPoint[i] = featuresTest[i][i] 

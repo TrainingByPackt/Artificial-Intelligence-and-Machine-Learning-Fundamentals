@@ -27,7 +27,7 @@ labelTestVector = np.zeros((labelTest.size, 10))
 for i, label in enumerate( labelTestVector ): 
     label[ labelTest[i] ] = 1
 
-# Set up the TensorFlow graph
+# Set up the TensorFlow graph deep learning model
 x = tf.placeholder( tf.float32, [None, 28 * 28 ] ) 
 f1 = tf.nn.relu 
 W1 = tf.Variable( tf.random_normal( [784, 200] ) ) 

@@ -12,6 +12,7 @@ Obstacles = {
     (7,7)
 }
 
+# Returns the successor nodes of State, excluding nodes in VisitedNodes
 def succ( State, VisitedNodes ):
     (row, col) = State
     (maxRow, maxCol) = Size
@@ -22,6 +23,8 @@ def succ( State, VisitedNodes ):
     if col < maxCol: succStates += [(row, col+1)] 
     return [s for s in succStates if s not in VisitedNodes if s not in Obstacles]
 
+# Creates a matrix of Size, start node Start, and infinite cost
+# in all nodes except Start
 def initializeCosts( Size, Start ):
     costs = [ [math.inf] * 9 for i in range(7) ]
     (x,y) = Start
@@ -63,6 +66,7 @@ def astar( Start, End ):
                     )
                 )
 
+# A* algorithm implementation logging the process
 def astar_verbose( Start, End ):
     Frontier = []
     Internal = set()
@@ -98,7 +102,8 @@ def astar_verbose( Start, End ):
     print( 'Internal', Internal )
     print( costs )
 
-def getShortestPath( costs, endNode ):
+# returns the path to endNode
+def getShortestPath( endNode ):
     path = [endNode]
     distance = getDistanceFromStart( endNode )
     while distance > 0:
@@ -110,6 +115,7 @@ def getShortestPath( costs, endNode ):
                 break #for
     return path
 
+# A* algorithm constructing the shortest path between Start and End
 def astar_with_path( Start, End ):
     Frontier = []
     Internal = set()
@@ -119,7 +125,7 @@ def astar_with_path( Start, End ):
         return costs[ node[0] - 1][ node[1]  - 1]
     def setDistanceFromStart( node, newDistance ):
         costs[ node[0] - 1][ node[1]  - 1] = newDistance
-    def getShortestPath( costs, endNode ):
+    def getShortestPath( endNode ):
         path = [endNode]
         distance = getDistanceFromStart( endNode )
         while distance > 0:
@@ -133,7 +139,7 @@ def astar_with_path( Start, End ):
     while len( Frontier ) > 0:
         (priority, node) = heapq.heappop( Frontier )
         if node == End:
-            return getShortestPath( costs, End )
+            return getShortestPath( End )
         Internal.add( node )
         successors = succ( node, Internal )
         for s in successors:

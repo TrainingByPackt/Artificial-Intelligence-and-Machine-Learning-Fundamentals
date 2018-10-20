@@ -38,5 +38,4 @@ model.fit( featuresTrain, labelTrain )
 
 labelPredicted = model.predict( scaledFeaturesLatest240 ) 
 
-# plot.plot( list(range(1,241)), labelPredicted[:240] )
 plot.plot( list(range(1,181)), labelPredicted[:180] )

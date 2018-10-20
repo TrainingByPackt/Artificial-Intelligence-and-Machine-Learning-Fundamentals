@@ -6,6 +6,7 @@ from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
 from sklearn.metrics import classification_report
 import numpy as np
 
+# 1. Loading and preparing data for classification
 dataFrame = pandas.read_csv( 'car.data' )
 
 labels = { 
@@ -37,13 +38,14 @@ featuresTrain, featuresTest, labelTrain, labelTest = model_selection.train_test_
     test_size=0.1 
 )
 
+# 2. Training the two classification models
 randomForestClassifier = RandomForestClassifier(n_estimators=100, max_depth=6) 
 randomForestClassifier.fit( featuresTrain, labelTrain ) 
 
 extraTreesClassifier = ExtraTreesClassifier(n_estimators=100, max_depth=6) 
 extraTreesClassifier.fit( featuresTrain, labelTrain )
 
-
+# 3. Classification report for random forests and extremely random trees
 print( 'randomForestClassifier:' )
 print(  
     classification_report(  
@@ -74,7 +76,7 @@ print(
 )
 print( '\n\n' )
 
-
+# 4. Optimization via leaving out features
 features2 = np.array( dataFrameEncoded.drop(['Class', 'Doors'], 1)) 
 label2 = np.array( dataFrameEncoded['Class'] )
 
@@ -108,6 +110,7 @@ print(
 )
 print( '\n\n' )
 
+# 5. Optimization via parametrization
 randomForestClassifier3 = RandomForestClassifier(n_estimators=150, max_depth=8, criterion='entropy', max_features=5) 
 randomForestClassifier3.fit( featuresTrain2, labelTrain2 ) 
 
