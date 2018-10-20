@@ -1,10 +1,8 @@
 # Written digit detection with neural networks
 
-We will be assuming that your boss is not satisfied with the results you presented in Activity 1 and asks you to consider adding two hidden layers to your original model and determine whether new layers improve the accuracy of the model. And to ensure that it happens correctly, you will need to have the knowledge of Deep Learning. 
+This section will discuss how to provide more security for the cryptocurrency traders via the detection of hand-written digits. We will be using assuming that you are a software developer at a new Cryptocurrency trader platform. The latest security measure you are implementing requires the recognition of hand-written digits. Use the MNIST library to train a neural network to recognize digits. You can read more about this dataset on https://www.tensorflow.org/tutorials/. 
 
-The solution of the previous activity is in the file `digits.py`. 
+​Improve the accuracy of the model as much as possible. To ensure that it happens correctly, you will need to complete the previous topic.
 
-Modify this solution by applying deep learning.
-
-
+At the end of the training, print the confusion matrix and the accuracy score.
 
