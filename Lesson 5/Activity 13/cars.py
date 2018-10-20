@@ -2,6 +2,7 @@ import pandas
 from sklearn import preprocessing
 from sklearn import model_selection
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import classification_report
 import numpy as np
 
 dataFrame = pandas.read_csv( 'car.data' )
