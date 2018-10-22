@@ -4,11 +4,11 @@
 import numpy as np
 
 # Vector
-v = np.array([1,3,5,7])
+v = np.array([1, 3, 5, 7])
 
 
 # Matrix
-A = np.mat([[1,2],[3,3]])
+A = np.mat([[1, 2], [3, 3]])
 # Out:  matrix([[1, 2], [3, 3]])
 
 
@@ -24,11 +24,11 @@ A * A
 
 
 # Determinant of a matrix
-np.linalg.det( A )
+np.linalg.det(A)
 # Out: -3.0000000000000004
 # Notice the margin of error is due to floating point arithmetics
 
 
 # Transposing a matrix
-np.matrix.transpose( A )
+np.matrix.transpose(A)
 # Out[12]: matrix([[1, 3], [2, 3]])
