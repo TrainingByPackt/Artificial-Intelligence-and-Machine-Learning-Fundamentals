@@ -1,9 +1,10 @@
 from sklearn import preprocessing
 import numpy as np
+import pandas
 
 dataFrame = pandas.read_csv('ks-projects-201801.csv', sep=',') 
 
-​dataFrame.replace( 'NA', -1000000, inplace=True ) 
+dataFrame.replace( 'NA', -1000000, inplace=True ) 
 dataFrame.replace( 'N/A', -1000000, inplace=True )
 
 dataFrame.drop( ['ID'], 1, inplace=True )
