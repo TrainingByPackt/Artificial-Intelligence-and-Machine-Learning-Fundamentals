@@ -2,7 +2,7 @@ import tensorflow.keras.datasets.mnist as mnist
 import numpy as np 
 import tensorflow as tf
 import random
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix
 
 # Import and preprocess data
 (featuresTrain, labelTrain),(featuresTest, labelTest) = mnist.load_data() 
