@@ -11,7 +11,7 @@ Obstacles = {
     (7,7)
 }
 
-def succ( State, VisitedNodes ):
+def successors( State, VisitedNodes ):
     (row, col) = State
     (maxRow, maxCol) = Size
     succStates = []

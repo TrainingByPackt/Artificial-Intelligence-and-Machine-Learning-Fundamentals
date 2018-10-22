@@ -3,7 +3,7 @@
 # 2. Execute:  dfs_tree( root )
 
 root = { 'value': 1, 'depth': 1} 
-def succ( node ): 
+def successors( node ): 
     if node['value'] == 5: 
         return [] 
     elif node['value'] == 4: 
@@ -20,7 +20,7 @@ def bfs_tree( node ):
     while len( nodesToVisit ) > 0: 
         currentNode = nodesToVisit.pop( 0 ) 
         visitedNodes.append( currentNode ) 
-        nodesToVisit.extend( succ( currentNode ) ) 
+        nodesToVisit.extend( successors( currentNode ) ) 
     return visitedNodes
 
 def dfs_tree( node ): 
@@ -29,5 +29,5 @@ def dfs_tree( node ):
     while len( nodesToVisit ) > 0: 
         currentNode = nodesToVisit.pop() 
         visitedNodes.append( currentNode ) 
-        nodesToVisit.extend( succ( currentNode ) ) 
+        nodesToVisit.extend( successors( currentNode ) ) 
     return visitedNodes

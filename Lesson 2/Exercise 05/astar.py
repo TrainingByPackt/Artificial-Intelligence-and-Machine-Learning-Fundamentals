@@ -13,7 +13,7 @@ Obstacles = {
 }
 
 # Returns the successor nodes of State, excluding nodes in VisitedNodes
-def succ( State, VisitedNodes ):
+def successors( State, VisitedNodes ):
     (row, col) = State
     (maxRow, maxCol) = Size
     succStates = []
@@ -55,8 +55,8 @@ def astar( Start, End ):
         if node == End:
             return priority
         Internal.add( node )
-        successors = succ( node, Internal )
-        for s in successors:
+        successorNodes = successors( node, Internal )
+        for s in successorNodes:
             newDistance = getDistanceFromStart( node ) + 1
             if newDistance < getDistanceFromStart( s ):
                 setDistanceFromStart( s, newDistance )
@@ -87,9 +87,9 @@ def astar_verbose( Start, End ):
             print( 'Costs matrix: ', costs )
             return priority
         Internal.add( node )
-        successors = succ( node, Internal )
-        print( 'successors', successors )
-        for s in successors:
+        successorNodes = successors( node, Internal )
+        print( 'successorNodes', successorNodes )
+        for s in successorNodes:
             newDistance = getDistanceFromStart( node ) + 1
             print( 's:', s, 'new distance:', newDistance, ' old distance:', getDistanceFromStart( s ) )
             if newDistance < getDistanceFromStart( s ):
@@ -107,7 +107,7 @@ def getShortestPath( endNode ):
     path = [endNode]
     distance = getDistanceFromStart( endNode )
     while distance > 0:
-        for neighbor in succ( path[-1], [] ):
+        for neighbor in successors( path[-1], [] ):
             newDistance = getDistanceFromStart( neighbor )
             if newDistance < distance:
                 path += [neighbor]
@@ -129,7 +129,7 @@ def astar_with_path( Start, End ):
         path = [endNode]
         distance = getDistanceFromStart( endNode )
         while distance > 0:
-            for neighbor in succ( path[-1], [] ):
+            for neighbor in successors( path[-1], [] ):
                 newDistance = getDistanceFromStart( neighbor )
                 if newDistance < distance:
                     path += [neighbor]
@@ -141,8 +141,8 @@ def astar_with_path( Start, End ):
         if node == End:
             return getShortestPath( End )
         Internal.add( node )
-        successors = succ( node, Internal )
-        for s in successors:
+        successorNodes = successors( node, Internal )
+        for s in successorNodes:
             newDistance = getDistanceFromStart( node ) + 1
             if newDistance < getDistanceFromStart( s ):
                 setDistanceFromStart( s, newDistance )

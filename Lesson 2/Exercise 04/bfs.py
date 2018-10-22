@@ -11,7 +11,7 @@ Obstacles = {
     (7,7)
 }
 
-def succ( State, VisitedNodes ):
+def successors( State, VisitedNodes ):
     (row, col) = State
     (maxRow, maxCol) = Size
     succStates = []
@@ -40,7 +40,7 @@ def bfs_tree( node ):
     while len( nodesToVisit ) > 0:
         currentNode = nodesToVisit.pop( 0 )
         visitedNodes.append( currentNode )
-        successorNodes = succ( currentNode, visitedNodes )
+        successorNodes = successors( currentNode, visitedNodes )
         updateCosts( costs, currentNode, successorNodes )
         nodesToVisit.extend( successorNodes )
     return costs
@@ -54,7 +54,7 @@ def bfs_tree_verbose( node ):
         stepCounter += 1
         currentNode = nodesToVisit.pop( 0 )
         visitedNodes.append( currentNode )
-        successorNodes = succ( currentNode, visitedNodes )
+        successorNodes = successors( currentNode, visitedNodes )
         updateCosts( costs, currentNode, successorNodes )
         nodesToVisit.extend( successorNodes )
         if currentNode == End:
