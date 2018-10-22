@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn import preprocessing
 from sklearn import linear_model
+from sklearn import model_selection
 
 inputData = [2, 8, 8, 18, 25, 21, 32, 44, 32, 48, 61, 45, 62]
 features = preprocessing.scale( inputData )

@@ -10,3 +10,4 @@ b = mean(y) - a*mean(x)
 
 plot.scatter( x, y )
 plot.plot( [0, 15], [b, 15*a+b] )
+plot.show()

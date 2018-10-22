@@ -8,3 +8,4 @@ y = np.array([2, 8, 8, 18, 25, 21, 32, 44, 32, 48, 61, 45, 62])
 
 plot.scatter( x, y )
 plot.plot( [0, 15], [b, 15*a+b] )
+plot.show()
