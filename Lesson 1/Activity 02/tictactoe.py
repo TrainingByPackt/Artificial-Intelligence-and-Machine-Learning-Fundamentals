@@ -52,8 +52,8 @@ def gameLoop():
         if emptyCellCount % 2 == 1: 
             Board = aiMove( Board ) 
         else: 
-            row = int( input( prompt='Enter row: ' ) ) 
-            col = int( input( prompt='Enter column: ' ) ) 
+            row = int(input('Enter row: ')) 
+            col = int(input('Enter column: ')) 
             Board = opponentMove( Board, row, col ) 
         printBoard( Board ) 
         isGameEnded = gameWonBy( Board ) != EMPTY_SIGN 
