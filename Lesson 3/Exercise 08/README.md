@@ -8,6 +8,6 @@ features = preprocessing.scale( fibonacci )
 label = np.array(range(13))
 ```
 
-Solution: `cross_validation.py`
+Solution: `train_test_split.py`
 
 
