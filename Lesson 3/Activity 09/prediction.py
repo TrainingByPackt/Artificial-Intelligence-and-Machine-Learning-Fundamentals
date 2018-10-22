@@ -5,6 +5,7 @@ from sklearn import model_selection
 from sklearn import linear_model 
 from sklearn.preprocessing import PolynomialFeatures
 from matplotlib import pyplot as plot 
+from sklearn import svm
 
 dataFrame = quandl.get("YALE/SPCOMP") 
 dataFrame[['Long Interest Rate', 'Real Price', 'Real Dividend', 'Cyclically Adjusted PE Ratio']] 
