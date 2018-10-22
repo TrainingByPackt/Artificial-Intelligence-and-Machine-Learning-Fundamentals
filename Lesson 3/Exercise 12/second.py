@@ -23,3 +23,4 @@ plot.plot(
     x2, f2(x2), # green 
     x2, f3(x2)  # red 
 )
+plot.show()

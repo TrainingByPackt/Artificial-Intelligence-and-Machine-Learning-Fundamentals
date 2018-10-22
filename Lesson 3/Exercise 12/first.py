@@ -23,3 +23,4 @@ plot.plot(
     x1, f2(x1), 
     x1, f3(x1) 
 )
+plot.show()
