@@ -6,4 +6,4 @@ print( 'A * A: ', A * A )
 
 print( 'det(A): ', np.linalg.det( A ) )
 
-print( 'transpose(A): ', numpy.matrix.transpose(A) )
+print( 'transpose(A): ', np.matrix.transpose(A) )
