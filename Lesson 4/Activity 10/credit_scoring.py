@@ -4,8 +4,8 @@ from sklearn import model_selection
 from sklearn import preprocessing
 
 # 1. Loading data
-dataFrame = pandas.read_csv('german.data', sep=' ')
-dataFrame.replace('NA', -1000000, inplace=True)
+data_frame = pandas.read_csv('german.data', sep=' ')
+data_frame.replace('NA', -1000000, inplace=True)
 
 # 2. Label encoding
 labels = {
@@ -23,29 +23,29 @@ labels = {
     'Phone': ['A191', 'A192'],
     'ForeignWorker': ['A201', 'A202']
 }
-labelEncoders = {}
-dataFrameEncoded = pandas.DataFrame()
+label_encoders = {}
+data_frame_encoded = pandas.DataFrame()
 
-for column in dataFrame:
+for column in data_frame:
     if column in labels:
-        labelEncoders[column] = preprocessing.LabelEncoder()
-        labelEncoders[column].fit(labels[column])
-        dataFrameEncoded[column] = labelEncoders[column].transform(
-            dataFrame[column])
+        label_encoders[column] = preprocessing.LabelEncoder()
+        label_encoders[column].fit(labels[column])
+        data_frame_encoded[column] = label_encoders[column].transform(
+            data_frame[column])
     else:
-        dataFrameEncoded[column] = dataFrame[column]
+        data_frame_encoded[column] = data_frame[column]
 
 # 3. Identification of features and labels
-features = np.array(dataFrameEncoded.drop(['CreditScore'], 1))
-label = np.array(dataFrameEncoded['CreditScore'])
+features = np.array(data_frame_encoded.drop(['CreditScore'], 1))
+label = np.array(data_frame_encoded['CreditScore'])
 
 # 4. Scaling features
-scaledFeatures = preprocessing.MinMaxScaler(
+scaled_features = preprocessing.MinMaxScaler(
     feature_range=(0, 1)).fit_transform(features)
 
 # 5. Splitting training and testing data
-featuresTrain, featuresTest, labelTrain, labelTest = model_selection.train_test_split(
-    scaledFeatures,
+features_train, features_test, label_train, label_test = model_selection.train_test_split(
+    scaled_features,
     label,
     test_size=0.2
 )

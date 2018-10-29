@@ -2,6 +2,6 @@
 
 Find the shortest path using the Breadth First Search algorithm.
 
-Execute `bfs_tree( Start )` to run the BFS search.
+Execute `bfs_tree( start )` to run the BFS search.
 
-To get statistics, execute `bfs_tree_verbose( Start )`.
+To get statistics, execute `bfs_tree_verbose( start )`.

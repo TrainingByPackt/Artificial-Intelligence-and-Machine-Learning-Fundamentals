@@ -1,9 +1,9 @@
 
 
-Size = (7, 9)
-Start = (5, 3)
-End = (6, 9)
-Obstacles = {
+size = (7, 9)
+start = (5, 3)
+end = (6, 9)
+obstacles = {
     (3, 4), (3, 5), (3, 6), (3, 7), (3, 8),
     (4, 5),
     (5, 5), (5, 7), (5, 9),
@@ -12,16 +12,16 @@ Obstacles = {
 }
 
 
-def successors(State, VisitedNodes):
-    (row, col) = State
-    (maxRow, maxCol) = Size
-    succStates = []
+def successors(state, visited_nodes):
+    (row, col) = state
+    (max_row, max_col) = size
+    succ_states = []
     if row > 1:
-        succStates += [(row-1, col)]
+        succ_states += [(row-1, col)]
     if col > 1:
-        succStates += [(row, col-1)]
-    if row < maxRow:
-        succStates += [(row+1, col)]
-    if col < maxCol:
-        succStates += [(row, col+1)]
-    return [s for s in succStates if s not in VisitedNodes if s not in Obstacles]
+        succ_states += [(row, col-1)]
+    if row < max_row:
+        succ_states += [(row+1, col)]
+    if col < max_col:
+        succ_states += [(row, col+1)]
+    return [s for s in succ_states if s not in visited_nodes if s not in obstacles]

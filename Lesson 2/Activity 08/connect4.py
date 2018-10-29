@@ -12,7 +12,7 @@ class ConnectFour(TwoPlayersGame):
         self.board = [0 for i in range(42)]
         self.nplayer = 1  # player 1 starts.
 
-        def generateWinningTuples():
+        def generate_winning_tuples():
             tuples = []
             # horizontal
             tuples += [
@@ -39,7 +39,7 @@ class ConnectFour(TwoPlayersGame):
                 for column in range(3, 7, 1)
             ]
             return tuples
-        self.tuples = generateWinningTuples()
+        self.tuples = generate_winning_tuples()
 
     def possible_moves(self):
         return [column+1

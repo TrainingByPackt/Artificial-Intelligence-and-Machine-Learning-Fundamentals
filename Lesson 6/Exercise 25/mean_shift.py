@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.cluster import MeanShift
 import matplotlib.pyplot as plot
 
-dataPoints = np.array([
+data_points = np.array([
     [1, 1],
     [1, 1.5],
     [2, 2],
@@ -20,26 +20,26 @@ dataPoints = np.array([
 
 print('Mean Shift clustering: ')
 
-MeanShiftModel = MeanShift()
-MeanShiftModel.fit(dataPoints)
+mean_shift_model = MeanShift()
+mean_shift_model.fit(data_points)
 
-print('Cluster centers: ', MeanShiftModel.cluster_centers_)
+print('Cluster centers: ', mean_shift_model.cluster_centers_)
 print('\n')
-print('Labels', MeanShiftModel.labels_)
+print('Labels', mean_shift_model.labels_)
 print('\n\n')
 
 plot.scatter(
-    MeanShiftModel.cluster_centers_[:, 0],
-    MeanShiftModel.cluster_centers_[:, 1]
+    mean_shift_model.cluster_centers_[:, 0],
+    mean_shift_model.cluster_centers_[:, 1]
 )
 
-for i in range(len(dataPoints)):
+for i in range(len(data_points)):
     plot.plot(
-        dataPoints[i][0],
-        dataPoints[i][1],
-        ['ro', 'go', 'yo', 'ko', 'mo'][MeanShiftModel.labels_[i]]
+        data_points[i][0],
+        data_points[i][1],
+        ['ro', 'go', 'yo', 'ko', 'mo'][mean_shift_model.labels_[i]]
     )
 plot.show()
 
 
-print('Prediction [(5,5),(0,10)]: ', MeanShiftModel.predict([[5, 5], [0, 10]]))
+print('Prediction [(5,5),(0,10)]: ', mean_shift_model.predict([[5, 5], [0, 10]]))

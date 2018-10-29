@@ -10,4 +10,4 @@ To create a framework for the Tic-Tac-Toe game for experimentation.
 
 ## Execution 
 
-Execute the call `gameLoop()` to start playing.
+Execute the call `game_loop()` to start playing.

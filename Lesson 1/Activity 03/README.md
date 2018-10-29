@@ -10,4 +10,4 @@ To experience the combinatoric explosion belonging to two randomly playing playe
 
 ## Execution 
 
-Execute the call `countPossibilities()` to start counting all possibilities.
+Execute the call `count_possibilities()` to start counting all possibilities.

@@ -5,40 +5,40 @@ from sklearn import model_selection
 from sklearn import svm
 from matplotlib import pyplot as plot
 
-dataFrame = quandl.get("YALE/SPCOMP")
+data_frame = quandl.get("YALE/SPCOMP")
 
-dataFrame.fillna(-100, inplace=True)
+data_frame.fillna(-100, inplace=True)
 
 # We shift the price data to be predicted 20 years forward
-dataFrame['Real Price Label'] = dataFrame['Real Price'].shift(-240)
+data_frame['Real Price Label'] = data_frame['Real Price'].shift(-240)
 
 # Then exclude the label column from the features
-features = np.array(dataFrame.drop('Real Price Label', 1))
+features = np.array(data_frame.drop('Real Price Label', 1))
 
 # We scale before dropping the last 240 rows from the features
-scaledFeatures = preprocessing.scale(features)
+scaled_features = preprocessing.scale(features)
 
 # Save the last 240 rows before dropping them
-scaledFeaturesLatest240 = scaledFeatures[-240:]
+scaled_features_latest_240 = scaled_features[-240:]
 
 # Exclude the last 240 rows from the data used for model building
-scaledFeatures = scaledFeatures[:-240]
+scaled_features = scaled_features[:-240]
 
 # Now we can drop the last 240 rows from the data frame
-dataFrame.dropna(inplace=True)
+data_frame.dropna(inplace=True)
 
 # Then build the labels from the remaining data
-label = np.array(dataFrame['Real Price Label'])
+label = np.array(data_frame['Real Price Label'])
 
 # The rest of the model building stays the same
-(featuresTrain, featuresTest, labelTrain,
- labelTest) = model_selection.train_test_split(scaledFeatures, label, test_size=0.1)
+(features_train, features_test, label_train,
+ label_test) = model_selection.train_test_split(scaled_features, label, test_size=0.1)
 
 model = svm.SVR(kernel='poly')
-model.fit(featuresTrain, labelTrain)
+model.fit(features_train, label_train)
 
-labelPredicted = model.predict(featuresTest)
+label_predicted = model.predict(features_test)
 
-print('Score: ', model.score(featuresTest, labelTest))
+print('Score: ', model.score(features_test, label_test))
 
-plot.plot(labelTest, labelPredicted, 'o')
+plot.plot(label_test, label_predicted, 'o')

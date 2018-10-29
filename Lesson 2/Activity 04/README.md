@@ -10,4 +10,4 @@ Make the agent developed in the first two activities detect situations when it c
 
 ## Execution 
 
-Execute the call `countPossibilities()` to start counting all possibilities.
+Execute the call `count_possibilities()` to start counting all possibilities.

@@ -10,4 +10,4 @@ Implement a heuristic evaluation in the Tic-Tac-Toe game. Use this heuristic fun
 
 ## Execution 
 
-Execute `countPossibilities()` to count all the possible game outcomes.
+Execute `count_possibilities()` to count all the possible game outcomes.

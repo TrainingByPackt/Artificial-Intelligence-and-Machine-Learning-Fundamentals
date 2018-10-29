@@ -5,27 +5,27 @@ from sklearn import model_selection
 from sklearn import linear_model
 from matplotlib import pyplot as plot
 
-dataFrame = quandl.get("YALE/SPCOMP")
+data_frame = quandl.get("YALE/SPCOMP")
 
-dataFrame.fillna(-100, inplace=True)
+data_frame.fillna(-100, inplace=True)
 
-dataFrame['Real Price Label'] = dataFrame['Real Price'].shift(-240)
+data_frame['Real Price Label'] = data_frame['Real Price'].shift(-240)
 
-dataFrame.dropna(inplace=True)
+data_frame.dropna(inplace=True)
 
-features = np.array(dataFrame.drop('Real Price Label', 1))
-label = np.array(dataFrame['Real Price Label'])
+features = np.array(data_frame.drop('Real Price Label', 1))
+label = np.array(data_frame['Real Price Label'])
 
-scaledFeatures = preprocessing.scale(features)
+scaled_features = preprocessing.scale(features)
 
-(featuresTrain, featuresTest, labelTrain,
- labelTest) = model_selection.train_test_split(scaledFeatures, label, test_size=0.1)
+(features_train, features_test, label_train,
+ label_test) = model_selection.train_test_split(scaled_features, label, test_size=0.1)
 
 model = linear_model.LinearRegression()
-model.fit(featuresTrain, labelTrain)
+model.fit(features_train, label_train)
 
-labelPredicted = model.predict(featuresTest)
+label_predicted = model.predict(features_test)
 
-print('Model score: ', model.score(featuresTest, labelTest))
+print('Model score: ', model.score(features_test, label_test))
 
-plot.scatter(labelTest, labelPredicted)
+plot.scatter(label_test, label_predicted)

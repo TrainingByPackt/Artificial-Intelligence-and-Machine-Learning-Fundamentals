@@ -11,7 +11,7 @@ PredictedLabels1 = [ True, False, False, False, False ]
 
 ```
 TestLabels2 = [True, True, False, True, True] 
-PredictedLabels = [True, True, True, True, True]
+PredictedLabels2 = [True, True, True, True, True]
 ```
 
 Use manual calcuations.

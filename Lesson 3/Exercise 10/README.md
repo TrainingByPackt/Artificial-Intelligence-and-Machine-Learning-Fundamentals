@@ -11,7 +11,7 @@ Get a data frame of the S&P 500:
 ```
 import quandl 
 
-dataFrame = quandl.get("YALE/SPCOMP")
+data_frame = quandl.get("YALE/SPCOMP")
 ```
 
 Perform the following steps:

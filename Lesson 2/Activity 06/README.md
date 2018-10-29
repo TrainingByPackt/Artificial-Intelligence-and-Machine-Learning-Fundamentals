@@ -10,4 +10,4 @@ Reduce the number of possible games by hard coding the first and the second move
 
 ## Execution 
 
-Execute `countPossibilities()` to count all the possible game outcomes.
+Execute `count_possibilities()` to count all the possible game outcomes.

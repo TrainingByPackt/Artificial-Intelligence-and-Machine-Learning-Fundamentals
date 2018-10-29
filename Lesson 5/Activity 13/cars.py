@@ -5,7 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report
 import numpy as np
 
-dataFrame = pandas.read_csv('car.data')
+data_frame = pandas.read_csv('car.data')
 
 labels = {
     'Buying': ['vhigh', 'high', 'med', 'low'],
@@ -17,34 +17,34 @@ labels = {
     'Class': ['unacc', 'acc', 'good', 'vgood']
 }
 
-labelEncoders = {}
-dataFrameEncoded = pandas.DataFrame()
-for column in dataFrame:
+label_encoders = {}
+data_frame_encoded = pandas.DataFrame()
+for column in data_frame:
     if column in labels:
-        labelEncoders[column] = preprocessing.LabelEncoder()
-        labelEncoders[column].fit(labels[column])
-        dataFrameEncoded[column] = labelEncoders[column].transform(
-            dataFrame[column])
+        label_encoders[column] = preprocessing.LabelEncoder()
+        label_encoders[column].fit(labels[column])
+        data_frame_encoded[column] = label_encoders[column].transform(
+            data_frame[column])
     else:
-        dataFrameEncoded[column] = dataFrame[column]
+        data_frame_encoded[column] = data_frame[column]
 
-features = np.array(dataFrameEncoded.drop(['Class'], 1))
-label = np.array(dataFrameEncoded['Class'])
+features = np.array(data_frame_encoded.drop(['Class'], 1))
+label = np.array(data_frame_encoded['Class'])
 
-featuresTrain, featuresTest, labelTrain, labelTest = model_selection.train_test_split(
+features_train, features_test, label_train, label_test = model_selection.train_test_split(
     features,
     label,
     test_size=0.1
 )
 
-decisionTree = DecisionTreeClassifier()
-decisionTree.fit(featuresTrain, labelTrain)
+decision_tree = DecisionTreeClassifier()
+decision_tree.fit(features_train, label_train)
 
-print('Score: ', decisionTree.score(featuresTest, labelTest))
+print('Score: ', decision_tree.score(features_test, label_test))
 print('\n\n')
 print(
     classification_report(
-        labelTest,
-        decisionTree.predict(featuresTest)
+        label_test,
+        decision_tree.predict(features_test)
     )
 )

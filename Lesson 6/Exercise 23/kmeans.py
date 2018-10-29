@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plot
 
-dataPoints = np.array([
+data_points = np.array([
     [1, 1],
     [1, 1.5],
     [2, 2],
@@ -22,51 +22,51 @@ print('--------------------------')
 print('K-Means with 3 clusters: ')
 print('\n')
 
-kMeansModel = KMeans(n_clusters=3)
-kMeansModel.fit(dataPoints)
+k_means_model = KMeans(n_clusters=3)
+k_means_model.fit(data_points)
 
-print('Cluster centers: ', kMeansModel.cluster_centers_)
+print('Cluster centers: ', k_means_model.cluster_centers_)
 print('\n')
-print('Labels', kMeansModel.labels_)
+print('Labels', k_means_model.labels_)
 print('\n\n\n')
 
 plot.scatter(
-    kMeansModel.cluster_centers_[:, 0],
-    kMeansModel.cluster_centers_[:, 1]
+    k_means_model.cluster_centers_[:, 0],
+    k_means_model.cluster_centers_[:, 1]
 )
 
-for i in range(len(dataPoints)):
+for i in range(len(data_points)):
     plot.plot(
-        dataPoints[i][0],
-        dataPoints[i][1],
-        ['ro', 'go', 'yo'][kMeansModel.labels_[i]]
+        data_points[i][0],
+        data_points[i][1],
+        ['ro', 'go', 'yo'][k_means_model.labels_[i]]
     )
 plot.show()
 
-print('Prediction [(5,5),(0,10)]: ', kMeansModel.predict([[5, 5], [0, 10]]))
+print('Prediction [(5,5),(0,10)]: ', k_means_model.predict([[5, 5], [0, 10]]))
 print('\n\n\n')
 
 print('--------------------------')
 print('K-Means with 2 clusters: ')
 print('\n')
 
-kMeansModel = KMeans(n_clusters=2)
-kMeansModel.fit(dataPoints)
+k_means_model = KMeans(n_clusters=2)
+k_means_model.fit(data_points)
 
-print('Cluster centers: ', kMeansModel.cluster_centers_)
+print('Cluster centers: ', k_means_model.cluster_centers_)
 print('\n')
-print('Labels', kMeansModel.labels_)
+print('Labels', k_means_model.labels_)
 print('\n\n\n')
 
 plot.scatter(
-    kMeansModel.cluster_centers_[:, 0],
-    kMeansModel.cluster_centers_[:, 1]
+    k_means_model.cluster_centers_[:, 0],
+    k_means_model.cluster_centers_[:, 1]
 )
 
-for i in range(len(dataPoints)):
+for i in range(len(data_points)):
     plot.plot(
-        dataPoints[i][0],
-        dataPoints[i][1],
-        ['ro', 'go'][kMeansModel.labels_[i]]
+        data_points[i][0],
+        data_points[i][1],
+        ['ro', 'go'][k_means_model.labels_[i]]
     )
 plot.show()

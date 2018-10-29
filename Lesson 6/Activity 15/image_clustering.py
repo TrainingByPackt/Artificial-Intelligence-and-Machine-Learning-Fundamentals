@@ -9,7 +9,7 @@ image = Image.open(INPUT_FILE)
 pixels = image.load()
 
 # 2. Building a data frame from the image
-dataFrame = pandas.DataFrame(
+data_frame = pandas.DataFrame(
     [[x, y, pixels[x, y][0], pixels[x, y][1], pixels[x, y][2]]
         for x in range(image.size[0])
         for y in range(image.size[1])
@@ -18,28 +18,27 @@ dataFrame = pandas.DataFrame(
 )
 
 # 3. Mean Shift model fitting
-MeanShiftModel = MeanShift()
-MeanShiftModel.fit(dataFrame)
+mean_shift_model = MeanShift()
+mean_shift_model.fit(data_frame)
+
 
 # 4. Mean Shift: creating image clusters
-
-
-def createImageClusters(model, outputFileName):
+def create_image_clusters(model, output_file_name):
     for i in range(len(model.cluster_centers_)):
         image = Image.open(INPUT_FILE)
         pixels = image.load()
-        for j in range(len(dataFrame)):
+        for j in range(len(data_frame)):
             if (model.labels_[j] != i):
-                pixels[int(dataFrame['x'][j]), int(
-                    dataFrame['y'][j])] = (255, 255, 255)
-        image.save(outputFileName + str(i) + '.jpg')
+                pixels[int(data_frame['x'][j]), int(
+                    data_frame['y'][j])] = (255, 255, 255)
+        image.save(output_file_name + str(i) + '.jpg')
 
 
-createImageClusters(MeanShiftModel, 'meanshift_cluster')
+create_image_clusters(mean_shift_model, 'meanshift_cluster')
 
 # 5. K-means model fitting with specified number of clusters
-kMeansModel = KMeans(n_clusters=8)
-kMeansModel.fit(dataFrame)
+k_means_model = KMeans(n_clusters=8)
+k_means_model.fit(data_frame)
 
 # 6. K-means: creating image clusters
-createImageClusters(kMeansModel, 'kmeans_cluster')
+create_image_clusters(k_means_model, 'kmeans_cluster')

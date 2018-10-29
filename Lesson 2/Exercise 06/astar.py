@@ -3,46 +3,46 @@ from simpleai.search import SearchProblem, astar
 
 
 class ShortestPath(SearchProblem):
-    def __init__(self, Size, Start, End, Obstacles):
-        self.Size = Size
-        self.Start = Start
-        self.End = End
-        self.Obstacles = Obstacles
-        super(ShortestPath, self).__init__(initial_state=self.Start)
+    def __init__(self, size, start, end, obstacles):
+        self.size = size
+        self.start = start
+        self.end = end
+        self.obstacles = obstacles
+        super(ShortestPath, self).__init__(initial_state=self.start)
 
     def actions(self, state):
         (row, col) = state
-        (maxRow, maxCol) = self.Size
-        succStates = []
+        (max_row, max_col) = self.size
+        succ_states = []
         if row > 1:
-            succStates += [(row-1, col)]
+            succ_states += [(row-1, col)]
         if col > 1:
-            succStates += [(row, col-1)]
-        if row < maxRow:
-            succStates += [(row+1, col)]
-        if col < maxCol:
-            succStates += [(row, col+1)]
-        return [s for s in succStates if s not in self.Obstacles]
+            succ_states += [(row, col-1)]
+        if row < max_row:
+            succ_states += [(row+1, col)]
+        if col < max_col:
+            succ_states += [(row, col+1)]
+        return [s for s in succ_states if s not in self._obstacles]
 
     def result(self, state, action):
         return action
 
     def is_goal(self, state):
-        return state == End
+        return state == end
 
-    def cost(self, state, action, newState):
+    def cost(self, state, action, new_state):
         return 1
 
     def heuristic(self, state):
         (x, y) = state
-        (u, v) = self.End
+        (u, v) = self.end
         return math.sqrt(abs(x-u) ** 2 + abs(y-v) ** 2)
 
 
-Size = (7, 9)
-Start = (5, 3)
-End = (6, 9)
-Obstacles = {
+size = (7, 9)
+start = (5, 3)
+end = (6, 9)
+obstacles = {
     (3, 4), (3, 5), (3, 6), (3, 7), (3, 8),
     (4, 5),
     (5, 5), (5, 7), (5, 9),

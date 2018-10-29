@@ -7,47 +7,47 @@ from sklearn.preprocessing import PolynomialFeatures
 from matplotlib import pyplot as plot
 from sklearn import svm
 
-dataFrame = quandl.get("YALE/SPCOMP")
-dataFrame[['Long Interest Rate', 'Real Price',
+data_frame = quandl.get("YALE/SPCOMP")
+data_frame[['Long Interest Rate', 'Real Price',
            'Real Dividend', 'Cyclically Adjusted PE Ratio']]
-dataFrame.fillna(-100, inplace=True)
+data_frame.fillna(-100, inplace=True)
 
 # We shift the price data to be predicted 20 years forward
-dataFrame['Real Price Label'] = dataFrame['Real Price'].shift(-240)
+data_frame['Real Price Label'] = data_frame['Real Price'].shift(-240)
 
 # Then exclude the label column from the features
-features = np.array(dataFrame.drop('Real Price Label', 1))
+features = np.array(data_frame.drop('Real Price Label', 1))
 
 # We scale before dropping the last 240 rows from the features
-scaledFeatures = preprocessing.scale(features)
+scaled_features = preprocessing.scale(features)
 
 # Save the last 240 rows before dropping them
-scaledFeaturesLatest240 = scaledFeatures[-240:]
+scaled_features_latest240 = scaled_features[-240:]
 
 # Exclude the last 240 rows from the data used for model building
-scaledFeatures = scaledFeatures[:-240]
+scaled_features = scaled_features[:-240]
 
 # Now we can drop the last 240 rows from the data frame
-dataFrame.dropna(inplace=True)
+data_frame.dropna(inplace=True)
 
 # Then build the labels from the remaining data
-label = np.array(dataFrame['Real Price Label'])
+label = np.array(data_frame['Real Price Label'])
 
 # The rest of the model building stays
-(featuresTrain, featuresTest, labelTrain,
- labelTest) = model_selection.train_test_split(scaledFeatures, label, test_size=0.1)
+(features_train, features_test, label_train,
+ label_test) = model_selection.train_test_split(scaled_features, label, test_size=0.1)
 
 # Step 2:
 #
 # Linear model
 model = linear_model.LinearRegression()
-model.fit(featuresTrain, labelTrain)
-print('Linear model score: ', model.score(featuresTest, labelTest))
+model.fit(features_train, label_train)
+print('Linear model score: ', model.score(features_test, label_test))
 print('\n')
 
-labelPredicted = model.predict(featuresTest)
+label_predicted = model.predict(features_test)
 plot.plot(
-    labelTest, labelPredicted, 'o',
+    label_test, label_predicted, 'o',
     [0, 3000], [0, 3000]
 )
 
@@ -55,20 +55,20 @@ plot.plot(
 # Step 3:
 #
 # Polynomial model
-polyRegressor = PolynomialFeatures(degree=3)
-polyScaledFeatures = polyRegressor.fit_transform(scaledFeatures)
-(polyFeaturesTrain, polyFeaturesTest, polyLabelTrain,
- polyLabelTest) = model_selection.train_test_split(polyScaledFeatures, label, test_size=0.1)
-linearModel = linear_model.LinearRegression()
-linearModel.fit(polyFeaturesTrain, polyLabelTrain)
+poly_regressor = PolynomialFeatures(degree=3)
+poly_scaled_features = poly_regressor.fit_transform(scaled_features)
+(poly_features_train, poly_features_test, poly_label_train,
+ poly_label_test) = model_selection.train_test_split(poly_scaled_features, label, test_size=0.1)
+model = linear_model.LinearRegression()
+model.fit(poly_features_train, poly_label_train)
 
-print('Polynomial model score: ', linearModel.score(
-    polyFeaturesTest, polyLabelTest))
+print('Polynomial model score: ', model.score(
+    poly_features_test, poly_label_test))
 print('\n')
 
-polyLabelPredicted = linearModel.predict(polyFeaturesTest)
+poly_label_predicted = model.predict(poly_features_test)
 plot.plot(
-    polyLabelTest, polyLabelPredicted, 'o',
+    poly_label_test, poly_label_predicted, 'o',
     [0, 3000], [0, 3000]
 )
 
@@ -77,10 +77,10 @@ plot.plot(
 #
 # Support Vector Regression
 model = svm.SVR(kernel='poly')
-model.fit(featuresTrain, labelTrain)
-print('SVM model score: ', model.score(featuresTest, labelTest))
-labelPredicted = model.predict(featuresTest)
+model.fit(features_train, label_train)
+print('SVM model score: ', model.score(features_test, label_test))
+label_predicted = model.predict(features_test)
 plot.plot(
-    labelTest, labelPredicted, 'o',
+    label_test, label_predicted, 'o',
     [0, 3000], [0, 3000]
 )

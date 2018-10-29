@@ -1,5 +1,5 @@
 import pandas
 
-dataFrame = pandas.read_csv('german.data', sep=' ')
+data_frame = pandas.read_csv('german.data', sep=' ')
 
-dataFrame.head()
+data_frame.head()

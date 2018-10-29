@@ -1,6 +1,6 @@
 from random import choice
 
-ComboIndices = [
+combo_indices = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -16,52 +16,52 @@ AI_SIGN = 'X'
 OPPONENT_SIGN = 'O'
 
 
-def printBoard(Board):
+def print_board(board):
     print(" ")
-    print(' '.join(Board[:3]))
-    print(' '.join(Board[3:6]))
-    print(' '.join(Board[6:]))
+    print(' '.join(board[:3]))
+    print(' '.join(board[3:6]))
+    print(' '.join(board[6:]))
     print(" ")
 
 
-def opponentMove(Board, row, column):
+def opponent_move(board, row, column):
     index = 3 * (row - 1) + (column - 1)
-    if Board[index] == EMPTY_SIGN:
-        return Board[:index] + OPPONENT_SIGN + Board[index+1:]
-    return Board
+    if board[index] == EMPTY_SIGN:
+        return board[:index] + OPPONENT_SIGN + board[index+1:]
+    return board
 
 
-def allMovesFromBoard(Board, sign):
-    moveList = []
-    for i, v in enumerate(Board):
+def all_moves_from_board(board, sign):
+    move_list = []
+    for i, v in enumerate(board):
         if v == EMPTY_SIGN:
-            moveList.append(Board[:i] + sign + Board[i+1:])
-    return moveList
+            move_list.append(board[:i] + sign + board[i+1:])
+    return move_list
 
 
-def aiMove(Board):
-    return choice(allMovesFromBoard(Board, AI_SIGN))
+def ai_move(board):
+    return choice(all_moves_from_board(board, AI_SIGN))
 
 
-def gameWonBy(Board):
-    for index in ComboIndices:
-        if Board[index[0]] == Board[index[1]] == Board[index[2]] != EMPTY_SIGN:
-            return Board[index[0]]
+def game_won_by(board):
+    for index in combo_indices:
+        if board[index[0]] == board[index[1]] == board[index[2]] != EMPTY_SIGN:
+            return board[index[0]]
     return EMPTY_SIGN
 
 
-def gameLoop():
-    Board = EMPTY_SIGN * 9
-    emptyCellCount = 9
-    isGameEnded = False
-    while emptyCellCount > 0 and not isGameEnded:
-        if emptyCellCount % 2 == 1:
-            Board = aiMove(Board)
+def game_loop():
+    board = EMPTY_SIGN * 9
+    empty_cell_count = 9
+    is_game_ended = False
+    while empty_cell_count > 0 and not is_game_ended:
+        if empty_cell_count % 2 == 1:
+            board = ai_move(board)
         else:
             row = int(input('Enter row: '))
             col = int(input('Enter column: '))
-            Board = opponentMove(Board, row, col)
-        printBoard(Board)
-        isGameEnded = gameWonBy(Board) != EMPTY_SIGN
-        emptyCellCount = sum(1 for cell in Board if cell == EMPTY_SIGN)
+            board = opponent_move(board, row, col)
+        print_board(board)
+        is_game_ended = game_won_by(board) != EMPTY_SIGN
+        empty_cell_count = sum(1 for cell in board if cell == EMPTY_SIGN)
     print('Game has been ended.')

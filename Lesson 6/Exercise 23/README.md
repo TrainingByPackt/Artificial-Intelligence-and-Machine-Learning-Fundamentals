@@ -5,7 +5,7 @@ Suppose the following data points are given:
 ```
 import numpy as np 
 
-dataPoints = np.array([
+data_points = np.array([
     [1, 1],  
     [1, 1.5], 
     [2, 2], 

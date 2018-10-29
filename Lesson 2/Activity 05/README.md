@@ -10,6 +10,6 @@ Force the computer to defend against the player putting his third sign in a row,
 
 ## Execution 
 
-Execute the call `gameLoop()` to start playing against the optimized opponent.
+Execute the call `game_loop()` to start playing against the optimized opponent.
 
-Execute `countPossibilities()` to count all the possible game outcomes.
+Execute `count_possibilities()` to count all the possible game outcomes.

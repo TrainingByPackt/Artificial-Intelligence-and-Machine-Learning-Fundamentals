@@ -3,19 +3,19 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.cluster import KMeans
 
-dataFrame = pandas.read_csv('Sales_Transactions_Dataset_Weekly.csv')
+data_frame = pandas.read_csv('Sales_Transactions_Dataset_Weekly.csv')
 
-dropColumns = ['Product_Code']
+drop_columns = ['Product_Code']
 for w in range(0, 52):
-    dropColumns.append('W' + str(w))
-features = dataFrame.drop(dropColumns, 1)
+    drop_columns.append('W' + str(w))
+features = data_frame.drop(drop_columns, 1)
 
 scaler = MinMaxScaler()
-scaledFeatures = scaler.fit_transform(features)
+scaled_features = scaler.fit_transform(features)
 
-kMeansModel = KMeans()
-kMeansModel.fit(scaledFeatures)
+k_means_model = KMeans()
+k_means_model.fit(scaled_features)
 
-print('Cluster centers: ', kMeansModel.cluster_centers_)
+print('Cluster centers: ', k_means_model.cluster_centers_)
 print('\n')
-print('Labels: ', kMeansModel.labels_)
+print('Labels: ', k_means_model.labels_)
