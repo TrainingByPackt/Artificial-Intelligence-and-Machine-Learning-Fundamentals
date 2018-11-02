@@ -1,7 +1,7 @@
-[![GitHub issues](https://img.shields.io/github/issues/TrainingByPackt/Beginning-PHP.svg)](https://github.com/TrainingByPackt/Beginning-PHP/issues)
-[![GitHub forks](https://img.shields.io/github/forks/TrainingByPackt/Beginning-PHP.svg)](https://github.com/TrainingByPackt/Beginning-PHP/network)
-[![GitHub stars](https://img.shields.io/github/stars/TrainingByPackt/Beginning-PHP.svg)](https://github.com/TrainingByPackt/Beginning-PHP/stargazers)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/TrainingByPackt/Beginning-PHP/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/TrainingByPackt/Beginning-AI-Machine-Learning-and-Python.svg)](https://github.com/TrainingByPackt/Beginning-AI-Machine-Learning-and-Python/issues)
+[![GitHub forks](https://img.shields.io/github/forks/TrainingByPackt/Beginning-AI-Machine-Learning-and-Python.svg)](https://github.com/TrainingByPackt/Beginning-AI-Machine-Learning-and-Python/network)
+[![GitHub stars](https://img.shields.io/github/stars/TrainingByPackt/Beginning-AI-Machine-Learning-and-Python.svg)](https://github.com/TrainingByPackt/Beginning-AI-Machine-Learning-and-Python/stargazers)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/TrainingByPackt/Beginning-AI-Machine-Learning-and-Python/pulls)
 
 
 
