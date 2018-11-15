@@ -33,8 +33,8 @@ For an optimal student experience, we recommend the following hardware configura
 
 ### Software requirements
 You’ll also need the following software installed in advance:
-* Operating System: Windows 7 SP1 64-bit, Windows 8.1 64-bit or Windows 10 64-bit, Ubuntu Linux, or the latest version of OS X
-* Browser: Google Chrome, latest version
+* __Operating System__: Windows 7 SP1 64-bit, Windows 8.1 64-bit or Windows 10 64-bit, Ubuntu Linux, or the latest version of OS X
+* __Browser__: Google Chrome, latest version
 * Anaconda, latest version
 * IPython latest version
 
