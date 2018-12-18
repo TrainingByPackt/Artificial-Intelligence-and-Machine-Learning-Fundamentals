@@ -5,29 +5,29 @@ import random
 from sklearn.metrics import accuracy_score, confusion_matrix
 
 # Import and preprocess data
-(featuresTrain, labelTrain), (featuresTest, labelTest) = mnist.load_data()
+(features_train, label_train), (features_test, label_test) = mnist.load_data()
 
-featuresTrain = featuresTrain / 255.0
-featuresTest = featuresTest / 255.0
+features_train = features_train / 255.0
+features_test = features_test / 255.0
 
 
 def flatten(matrix):
     return [elem for row in matrix for elem in row]
 
 
-featuresTrainVector = [
-    flatten(image) for image in featuresTrain
+features_train_vector = [
+    flatten(image) for image in features_train
 ]
-featuresTestVector = [
-    flatten(image) for image in featuresTest
+features_test_vector = [
+    flatten(image) for image in features_test
 ]
 
-labelTrainVector = np.zeros((labelTrain.size, 10))
-for i, label in enumerate(labelTrainVector):
-    label[labelTrain[i]] = 1
-labelTestVector = np.zeros((labelTest.size, 10))
-for i, label in enumerate(labelTestVector):
-    label[labelTest[i]] = 1
+label_train_vector = np.zeros((label_train.size, 10))
+for i, label in enumerate(label_train_vector):
+    label[label_train[i]] = 1
+label_test_vector = np.zeros((label_test.size, 10))
+for i, label in enumerate(label_test_vector):
+    label[label_test[i]] = 1
 
 # Set up the TensorFlow graph
 f = tf.nn.softmax
@@ -38,12 +38,12 @@ y = f(tf.add(tf.matmul(x, W), b))
 
 # Train the model
 y_true = tf.placeholder(tf.float32, [None, 10])
-crossEntropy = tf.nn.softmax_cross_entropy_with_logits_v2(
+cross_entropy = tf.nn.softmax_cross_entropy_with_logits_v2(
     logits=y,
     labels=y_true
 )
 
-cost = tf.reduce_mean(crossEntropy)
+cost = tf.reduce_mean(cross_entropy)
 optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.5).minimize(cost)
 
 session = tf.Session()
