@@ -22,7 +22,7 @@ class ShortestPath(SearchProblem):
             succ_states += [(row+1, col)]
         if col < max_col:
             succ_states += [(row, col+1)]
-        return [s for s in succ_states if s not in self._obstacles]
+        return [s for s in succ_states if s not in self.obstacles]
 
     def result(self, state, action):
         return action
